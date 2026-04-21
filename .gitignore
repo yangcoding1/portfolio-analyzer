@@ -1,0 +1,49 @@
+# ── Python ──────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# 가상환경 (venv, .venv 모두 무시)
+venv/
+.venv/
+env/
+
+# 환경변수 파일 (절대 커밋하면 안 됨 — API 키, DB 비밀번호 포함)
+backend/.env
+*.env
+
+# ── Next.js / Node ──────────────────────────────────────
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.vercel/
+frontend/next-env.d.ts
+
+# npm / yarn 잠금 파일은 커밋하는 것이 원칙이므로 무시하지 않음
+# (package-lock.json, yarn.lock → 커밋 O)
+
+# ── 환경변수 (프론트) ────────────────────────────────────
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# ── Docker / 인프라 ──────────────────────────────────────
+.dockerignore
+
+# ── 에디터 / OS ──────────────────────────────────────────
+.vscode/
+.idea/
+*.DS_Store
+Thumbs.db
+
+# ── 테스트 / 커버리지 ────────────────────────────────────
+.coverage
+htmlcov/
+.pytest_cache/
