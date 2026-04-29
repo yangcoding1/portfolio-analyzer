@@ -1,3 +1,75 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    /* Midnight Forest — slate-950에 미세한 emerald 방사형 그라디언트 */
+    background-color: #020617;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(16,185,129,0.05) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 85%, rgba(20,184,166,0.04) 0%, transparent 55%);
+    color: #f1f5f9;  /* slate-100 — 눈부심 없는 오프화이트 */
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+
+  /* 커스텀 스크롤바 */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: #020617; }
+  ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+  /* 날짜 입력 아이콘 */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.4) sepia(1) saturate(2) hue-rotate(130deg);
+    opacity: 0.5;
+    cursor: pointer;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator:hover { opacity: 0.9; }
+
+  /* 숫자 화살표 */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button { opacity: 0.25; }
+
+  /* select 드롭다운 */
+  select option { background-color: #0f172a; color: #f1f5f9; }
+}
+
+@layer utilities {
+  /* 글래스모피즘 카드 — Midnight Forest 핵심 스타일 */
+  .glass-card {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid rgba(148, 163, 184, 0.08);
+    border-radius: 24px;
+  }
+  .glass-card-hover:hover {
+    background: rgba(15, 23, 42, 0.75);
+    border-color: rgba(148, 163, 184, 0.14);
+  }
+
+  /* 그라디언트 텍스트 — raw CSS로 (@apply는 custom gradient에서 오류 발생) */
+  .text-gradient-forest {
+    background-image: linear-gradient(135deg, #34d399 0%, #10b981 50%, #14b8a6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* 섹션 레이블 */
+  .label-section {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;  /* slate-500 */
+  }
+
+  /* 얇은 상단 색상 라인 — KPI 카드 인디케이터 */
+  .top-line-emerald { border-top: 1px solid rgba(52, 211, 153, 0.4); }
+  .top-line-rose    { border-top: 1px solid rgba(251, 113, 133, 0.4); }
+  .top-line-amber   { border-top: 1px solid rgba(251, 191, 36, 0.4); }
+  .top-line-teal    { border-top: 1px solid rgba(45, 212, 191, 0.4); }
+}

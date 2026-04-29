@@ -46,6 +46,8 @@ class BacktestResponse(BaseModel):
     beta: float
     portfolio_values: list[PortfolioPoint]
     drawdown_series: list[DrawdownPoint]
+    asset_series: list[dict] = []   # [{"date": "YYYY-MM-DD", "SPY": 6000.0, "TLT": 4000.0}]
+    correlation: dict = {}          # {"tickers": ["SPY","TLT"], "matrix": [[1.0,-0.3],[-0.3,1.0]]}
 
 
 class TickerResult(BaseModel):

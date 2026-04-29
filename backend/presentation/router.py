@@ -22,6 +22,8 @@ async def run_backtest(request: BacktestRequest):
     )
     try:
         result = RunBacktestUseCase(YFinancePriceRepository()).execute(config)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc))
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))
 

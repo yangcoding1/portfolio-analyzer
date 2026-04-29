@@ -1,8 +1,8 @@
-# Neo-Visualizer
+# Portfolio-Analyzer
 
-Personalized portfolio backtesting web app — configure assets, run backtests, and visualize results.
+Personalized portfolio backtesting web app — configure assets, run backtests, and visualize results with a Midnight Forest glass morphism dashboard.
 
-**Metrics:** CAGR · MDD · Sharpe Ratio · Volatility · Alpha · Beta · Best/Worst Year
+**Metrics:** CAGR · MDD · Sharpe Ratio · Volatility · Alpha · Beta · Best/Worst Year · Correlation Matrix
 
 ---
 
@@ -59,8 +59,8 @@ frontend/
 
 | Layer | Technology |
 |---|---|
-| Frontend | Next.js + Tailwind CSS + Recharts |
+| Frontend | Next.js 15 + Tailwind CSS + Recharts + Shadcn UI |
 | Backend | FastAPI (Python) |
 | Database | TimescaleDB |
 | Data | yfinance |
-| Infrastructure | Docker |
+| Infrastructure | Docker + WSL2 |

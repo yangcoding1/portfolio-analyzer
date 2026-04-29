@@ -32,3 +32,5 @@ class BacktestResult:
     beta: float           # 시장 민감도 (1.0 = 시장과 동일한 움직임)
     portfolio_values: list[dict]   # [{"date": "YYYY-MM-DD", "value": float}]
     drawdown_series: list[dict]    # [{"date": "YYYY-MM-DD", "drawdown": float}]
+    asset_series: list[dict] = field(default_factory=list)    # [{"date": "...", "SPY": 6000, "TLT": 4000}]
+    correlation: dict = field(default_factory=dict)           # {"tickers": [...], "matrix": [[...]]}

@@ -36,8 +36,18 @@ export interface BacktestResponse {
   best_year: number;
   worst_year: number;
   benchmark_cagr: number | null;
+  // 백엔드에서 계산 가능할 때 포함됨 (없으면 카드에 "—" 표시)
+  alpha?: number | null;  // 시장 초과 수익률 (벤치마크 대비)
+  beta?:  number | null;  // 시장 민감도 (1.0 = 시장과 동일)
   portfolio_values: PortfolioPoint[];
   drawdown_series: DrawdownPoint[];
+  // 자산별 일별 달러 가치: [{"date":"2015-01-02","SPY":6000,"TLT":4000}, ...]
+  asset_series?: Record<string, number | string>[];
+  // 자산 간 상관계수 매트릭스
+  correlation?: {
+    tickers: string[];
+    matrix: number[][];
+  };
 }
 
 export async function runBacktest(request: BacktestRequest): Promise<BacktestResponse> {

@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 from typing import Sequence
 
 
@@ -77,3 +78,19 @@ def calculate_alpha_beta(
     alpha = annual_rp - risk_free_rate - beta * (annual_rm - risk_free_rate)
 
     return alpha, beta
+
+
+def calculate_correlation_matrix(prices: pd.DataFrame) -> dict:
+    """
+    자산 간 Pearson 상관계수 매트릭스 계산.
+
+    일간 수익률을 기반으로 계산합니다.
+    - r = +1: 완전 양의 상관 (같은 방향으로 움직임)
+    - r =  0: 무상관
+    - r = -1: 완전 음의 상관 (반대 방향으로 움직임 → 분산 효과)
+    """
+    daily_returns = prices.pct_change().dropna()
+    corr = daily_returns.corr()
+    tickers = list(corr.columns)
+    matrix = [[round(float(corr.loc[r, c]), 4) for c in tickers] for r in tickers]
+    return {"tickers": tickers, "matrix": matrix}
